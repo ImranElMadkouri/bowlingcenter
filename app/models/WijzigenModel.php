@@ -55,14 +55,15 @@
     public function updateWijzigen($post) {
         try {
           // $this->db->dbHandler->beginTransaction();
-            //  var_dump($post); exit();
-          $this->db->query('UPDATE baan SET Nummer = :Nummer WHERE Id = :id;');
-
-          
+  
+          $this->db->query(" UPDATE baan
+          SET Nummer = :Nummer
+          WHERE Baan.Id = :Id;");
+  
           $this->db->bind(':Id', $post["id"], PDO::PARAM_INT);
           $this->db->bind(':Nummer', $post["Nummer"], PDO::PARAM_STR);
-
-           $this->db->execute();
+  
+          $this->db->execute();
   
         } catch(PDOException $e) {
           echo $e->getMessage() . "Rollback";

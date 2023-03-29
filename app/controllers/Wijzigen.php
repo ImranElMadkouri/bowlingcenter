@@ -24,15 +24,13 @@ class Wijzigen extends Controller {
                   <td>$value->AantalVolwassen</td>
                   <td>$value->AantalKinderen</td>
                   <td>$value->Nummer</td>
-                  <td>
-                  <a href='" . URLROOT . "/wijzigen/update/$value->Nummer'>update</a>
-              </td>
+                  <td><a href='" . URLROOT . "/wijzigen /update/$value->Nummer'>update</a></td>
                 </tr>";
     }
 
 
     $data = [
-      'title' => '<h1>Landenoverzicht</h1>',
+      'title' => '<h1>Wijzigen</h1>',
       'wijzigen' => $rows
     ];
     $this->view('wijzigen/index', $data);
@@ -48,12 +46,12 @@ class Wijzigen extends Controller {
         } 
         else 
         {
-            $row = $this->WijzigenModel->getSinglewijzigen($id);
+            $row = $this->WijzigenModel->getSingleWijzigen($id);
 
             // var_dump($row);
             // exit();
             
-            $data = ['title' => '<h1>Update Baan</h1>', 'row' => $row];
+            $data = ['title' => '<h1>Update wijzigen</h1>', 'row' => $row];
             $this->view("wijzigen/update", $data);
         }
     } 

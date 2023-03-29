@@ -8,7 +8,12 @@
         <tbody>
             <tr>
                 <td>
-                    <input type="number" name="Nummer" id="Nummer" value="<?= $data["row"]->Nummer; ?>">
+                    <input type="text" name="Nummer" id="Nummer" value="<?= $data["row"]->Nummer; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="id" value="<?= $data["row"]->PersonId; ?>">
                 </td>
             </tr>
             <tr>
