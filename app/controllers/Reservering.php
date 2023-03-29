@@ -1,27 +1,21 @@
 <?php
 class Reservering extends Controller {
   // Properties, field
-  private $ReseveringModel;
+  private $ReserveringModel;
 
   // Dit is de constructor
   public function __construct() {
-    $this->ReseveringModel = $this->model('Resevering');
+    $this->ReserveringModel = $this->model('ReserveringModel');
   }
-
+  
   public function index() {
-    /**
-     * Haal via de method getFruits() uit de model Fruit de records op
-     * uit de database
-     */
-    $Resevering = $this->ReseveringModel->getResevering();
-
-    /**
-     * Maak de inhoud voor de tbody in de view
-     */
+    
+    $reservering = $this->ReserveringModel->getReservering();
+    $dates = $this->ReserveringModel->getUniqueDates();
+    
     $rows = '';
-    foreach ($Resevering as $value){
+    foreach ($reservering as $value){
       $rows .= "<tr>
-                  <td>$value->id</td>
                   <td>$value->Voornaam</td>
                   <td>$value->Tussenvoegsel</td>
                   <td>$value->Achternaam</td>
@@ -36,8 +30,11 @@ class Reservering extends Controller {
 
     $data = [
       'title' => '<h1>Landenoverzicht</h1>',
-      'reserving' => $rows
+      'reservering' => $rows,
+      'dates' => $dates
     ];
-    $this->view('reserving/index', $data);
+    $this->view('reservering/index', $data);
   }
+
+  
 }
